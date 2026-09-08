@@ -1,0 +1,72 @@
+:root {
+    --color-primary: #3f72af;
+    --color-primary-dark: #2c5282;
+    --color-secondary: #f9a826;
+    --color-background: #f5f7fb;
+    --color-surface: #ffffff;
+    --color-text: #1f2937;
+    --color-muted: #6b7280;
+    --color-accent: #10b981;
+    --color-danger: #ef4444;
+}
+
+.bg-brand {
+    background-color: var(--color-primary);
+}
+
+.bg-soft {
+    background-color: var(--color-background);
+}
+
+.bg-surface {
+    background-color: var(--color-surface);
+}
+
+.text-brand {
+    color: var(--color-primary);
+}
+
+.text-muted-2 {
+    color: var(--color-muted);
+}
+
+.link-brand {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.link-brand:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+.btn-brand {
+    color: #fff;
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-brand:hover,
+.btn-brand:focus {
+    color: #fff;
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+}
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: var(--color-background);
+    color: var(--color-text);
+}
+
+.login-card {
+    border-radius: 1rem;
+}
+
+.login-logo {
+    width: 56px;
+    height: 56px;
+    font-size: 1.1rem;
+}

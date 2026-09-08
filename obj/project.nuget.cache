@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "RNFk/zbp4gU=",
+  "success": true,
+  "projectFilePath": "/home/dugmonk/TecNM/Frontend/Proyectos/2026RecetaFront/2026RecetaFront.csproj",
+  "expectedPackageFiles": [
+    "/home/dugmonk/.nuget/packages/microsoft.aspnetcore.app.internal.assets/10.0.11/microsoft.aspnetcore.app.internal.assets.10.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}
