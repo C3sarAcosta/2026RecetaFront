@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("2026RecetaFront")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ef32805859e418be32bc5a53306b278404f5423")]
 [assembly: System.Reflection.AssemblyProductAttribute("2026RecetaFront")]
 [assembly: System.Reflection.AssemblyTitleAttribute("2026RecetaFront")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

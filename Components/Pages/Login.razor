@@ -14,6 +14,14 @@
                             <h2 class="h4 text-brand mb-1">Bienvenido</h2>
                             <p class="text-muted mb-8">Inicia sesion para continuar</p>
                         </div>
+                        @if(!string.IsNullOrEmpty(mensajeError))
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <strong>Error:</strong> @mensajeError
+                                <button type="button" class="btn-close" 
+                                        @onclick="() => mensajeError = string.Empty"></button>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -22,7 +30,7 @@
 </div>
 
 @code {
-    /*
+    
     private CredencialesUsuario credenciales = new();
     private bool cargando = false;
     private string mensajeError = string.Empty;
@@ -56,5 +64,5 @@
             cargando = false;
         }
     }
-    */
+    
 }
