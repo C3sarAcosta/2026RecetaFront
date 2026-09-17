@@ -1,3 +1,4 @@
+using System.Net;
 using _2026RecetaFront.DTOs;
 
 namespace _2026RecetaFront.Services
@@ -29,7 +30,7 @@ namespace _2026RecetaFront.Services
             {
                 var response = await httpClient.PostAsJsonAsync($"{endpoint}/Login", credencialesUsuario);
 
-                if (response.IsSuccessStatus)
+                if (response.IsSuccessStatusCode)
                 {
                     var respuesta =  await response.Content.ReadFromJsonAsync<RespuestaAutenticacion>();
 
@@ -49,6 +50,68 @@ namespace _2026RecetaFront.Services
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al hacer login: {ex.Message}");
+                return null;
+            }
+        }
+
+        public async Task Logout()
+        {
+            await tokenService.EliminarToken();
+        }
+
+        public async Task<RespuestaAutenticacion?> Registrar(CredencialesUsuario credenciales)
+        {
+            try
+            {
+                var response = await httpClient.PostAsJsonAsync($"{endpoint}/registrar", credenciales);
+                //TODO: Revisar el endpoint en el backen
+                if (response.IsSuccessStatusCode)
+                {
+                    var respuesta = await response.Content.ReadFromJsonAsync<RespuestaAutenticacion>();
+                    if(respuesta != null)
+                    {
+                        await tokenService.GuardarToken(respuesta.Token, respuesta.Expiracion);
+                        return respuesta;
+                    }
+                }
+                return null;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Error al registrar: {ex.Message}");
+                return null;
+            }
+        } 
+
+        public async Task<RespuestaAutenticacion?> RenovarToken()
+        {
+            try
+            {
+                var token = await tokenService.ObtenerToken();
+                
+                if(string.IsNullOrEmpty(token))
+                    return null;
+
+                //Agregar el token actual al header
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var response = await httpClient.GetAsync($"{endpoint}/RenovarToken");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var respuesta = await response.Content.ReadFromJsonAsync<RespuestaAutenticacion>();
+
+                    if(response != null)
+                    {
+                        await tokenService.GuardarToken(respuesta!.Token, respuesta.Expiracion);
+                        return respuesta;
+                    }
+                }
+                return null;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Error al renovar el token: {ex.Message}");
                 return null;
             }
         }
